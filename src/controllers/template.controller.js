@@ -6,7 +6,7 @@ exports.createTemplate = async (req, res) => {
   const { name, author, gradient_type, direction, first_color, second_color } = req.body;
 
   const { rows } = await db.query(
-    "INSERT INTO templates ( name, author, gradient_type, direction, first_color, second_color) VALUES ($1, $2, $3, $4, $5, $6, $7)",
+    "INSERT INTO templates ( name, author, gradient_type, direction, first_color, second_color) VALUES ($1, $2, $3, $4, $5, $6)",
     [ name, author, gradient_type, direction, first_color, second_color]
   );
 
