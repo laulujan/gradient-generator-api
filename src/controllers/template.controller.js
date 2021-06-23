@@ -3,17 +3,17 @@ const db = require("../config/database");
 // ==> Create new 'Template' method:
 
 exports.createTemplate = async (req, res) => {
-  const { name, author, gradient_type, first_direction, second_direction, first_color, second_color } = req.body;
+  const { name, author, gradient_type, direction, first_color, second_color } = req.body;
 
   const { rows } = await db.query(
-    "INSERT INTO templates ( name, author, gradient_type, first_direction, second_direction, first_color, second_color) VALUES ($1, $2, $3, $4, $5, $6, $7)",
-    [ name, author, gradient_type, first_direction, second_direction, first_color, second_color]
+    "INSERT INTO templates ( name, author, gradient_type, direction, first_color, second_color) VALUES ($1, $2, $3, $4, $5, $6, $7)",
+    [ name, author, gradient_type, direction, first_color, second_color]
   );
 
   res.status(201).send({
     message: "Template successfully created!",
     body: {
-      template: { name, author, gradient_type, first_direction, second_direction, first_color, second_color }
+      template: { name, author, gradient_type, direction, first_color, second_color }
     },
   });
 };
